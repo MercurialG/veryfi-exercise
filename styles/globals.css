@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-gradient-to-r from-[#171C3A] to-[#115246];
+  }
+  .receiptField {
+    @apply p-1 my-[1px] border-[1px] border-blue-400 rounded-md;
+  }
+}

@@ -14,6 +14,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "cdn.veryfi.com",
       },
+      {
+        protocol: "https",
+        hostname: "scdn.veryfi.com",
+      },
     ],
   },
 };

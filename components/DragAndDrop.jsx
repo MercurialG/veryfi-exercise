@@ -46,12 +46,16 @@ function FileUploader() {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (
-    <div {...getRootProps()}>
+    <div
+      className="flex h-[100px] items-center justify-center border-dotted border-[5px]
+       border-blue-500 rounded-md my-3 hover:opacity-70 bg-[#DDE4E4]"
+      {...getRootProps()}
+    >
       <input {...getInputProps()} />
       {isDragActive ? (
         <p>Drop the files here ...</p>
       ) : (
-        <p>Drag & drop some files here, or click to select files</p>
+        <p className="font-bold">Drag & drop, or click to select receipts</p>
       )}
     </div>
   );

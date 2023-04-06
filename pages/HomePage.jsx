@@ -4,9 +4,9 @@ import ReceiptData from "../components/ReceiptData";
 
 function HomePage() {
   return (
-    <div className="flex columns-2 background-color-black">
-      <DragAndDrop className="height-5" />
-      <ReceiptData className="border solid" />
+    <div className="flex-col mx-auto self-center items-center content-center w-[80vw] h-[80vh] ">
+      <DragAndDrop />
+      <ReceiptData />
     </div>
   );
 }
