@@ -3,12 +3,20 @@ const API_KEY = process.env.API_KEY;
 const CLIENT_ID = process.env.CLIENT_ID;
 const ENVIRONMENT_URL = process.env.ENVIRONMENT_URL;
 
+export const config = {
+  api: {
+    bodyParser: {
+      sizeLimit: "5mb",
+    },
+  },
+};
+
+// Making a call to veryfi API using base64 string
 export default async function handler(req, res) {
-  const fileData = req.body;
-  // const { fileName, fileData } = await req.body;
-  // console.log(fileName);
+  const { fileName, fileData } = JSON.parse(req.body);
+  console.log(fileName);
   const jsonData = JSON.stringify({
-    file_name: "fileName",
+    file_name: fileName,
     file_data: fileData,
     boost_mode: true,
   });

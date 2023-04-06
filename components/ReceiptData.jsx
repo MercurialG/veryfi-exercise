@@ -663,9 +663,11 @@ const testData = [
 
 import { useReceiptContext } from "../context/state";
 import Image from "next/image";
+import Link from "next/link";
 function ReceiptData() {
+  // Using data from context in ../context/state.js
   const { receiptData, setReceiptData } = useReceiptContext();
-  const receipts = testData.map((item) => (
+  const receipts = receiptData.map((item) => (
     <li
       className=" flex-row justify-center items-center 
       p-5 list-none border-solid border-white-500 border-[2px] 
@@ -676,8 +678,8 @@ function ReceiptData() {
       <div>
         {/* <Image height={200} width={100} alt="receipt" src={item.img_url} /> */}
       </div>
-      <div>
-        {item.vendor.logo && (
+      <div className="flex flex-col items-center justify-center">
+        {item.vendor?.logo && (
           <Image
             className="mx-auto mb-1 border-solid border-grey-400 border-[1px] rounded-full"
             height={100}
@@ -686,8 +688,16 @@ function ReceiptData() {
             src={item.vendor.logo}
           />
         )}
-        <p className=" text-md text-center mb-1">{item.vendor.name}</p>
-        <p className=" text-xs text-center mb-1">{item.vendor.address}</p>
+        <p className=" text-md text-center mb-1">{item.vendor?.name}</p>
+        <p className=" text-xs text-center mb-1">{item.vendor?.address}</p>
+        {item.vendor?.map_url && (
+          <Link
+            className="text-sm self-center font-bold mb-1 text-green-600"
+            href={item.vendor.map_url}
+          >
+            Show on map
+          </Link>
+        )}
       </div>
       <div>
         <table className="table-fixed w-full divide-y divide-black mb-5 border-b-[1px] border-black">
@@ -700,7 +710,7 @@ function ReceiptData() {
             </tr>
           </thead>
           <tbody className="text-[12px]">
-            {item.line_items.map((el) => {
+            {item.line_items?.map((el) => {
               return (
                 <tr key={el.id}>
                   <td className="text-[10px]">{el.description}</td>

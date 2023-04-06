@@ -9,4 +9,8 @@
   .receiptField {
     @apply p-1 my-[1px] border-[1px] border-blue-400 rounded-md;
   }
+  .dragAndDrop {
+    @apply flex h-[100px] items-center justify-center border-dotted border-[5px]
+       border-blue-500 rounded-md my-3 hover:opacity-70 bg-[#DDE4E4];
+  }
 }
