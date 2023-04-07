@@ -4,7 +4,7 @@
 
 @layer base {
   .receiptField {
-    @apply p-1 my-[1px] border-[1px] border-blue-400 rounded-md;
+    @apply p-1 my-[1px] border-[1px] border-[#02f96f] rounded-md;
   }
   .dragAndDrop {
     @apply flex h-[80vh] w-[80%] md:w-[70%] items-center justify-center 

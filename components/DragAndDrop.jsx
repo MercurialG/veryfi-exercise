@@ -3,44 +3,49 @@ import { useReceiptContext } from "../context/state";
 import Image from "next/image";
 
 function DragAndDrop() {
-  const [imageDataUrl, setImageDataUrl] = useState();
+  const [imageDataUrl, setImageDataUrl] = useState(null);
   const { receiptData, setReceiptData } = useReceiptContext();
 
   async function sendFile(file) {
-    const base64 = await convertBase64(file);
-    const fileBody = JSON.stringify({
-      fileName: file.name,
-      fileType: file.type,
-      fileData: base64,
-    });
-    const response = await fetch("/api/upload", {
-      method: "POST",
-      body: fileBody,
-    });
+    if (file) {
+      const base64 = await convertBase64(file);
+      const fileBody = JSON.stringify({
+        fileName: file.name,
+        fileType: file.type,
+        fileData: base64,
+      });
+      const response = await fetch("/api/upload", {
+        method: "POST",
+        body: fileBody,
+      });
 
-    const data = await response.json();
-    setReceiptData([data]);
+      const data = await response.json();
+      setReceiptData([data]);
+    }
   }
   // Convert input image to base64
   const convertBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
+    if (file) {
+      return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
 
-      fileReader.onload = () => {
-        setImageDataUrl(fileReader.result);
-        resolve(fileReader.result);
-      };
+        fileReader.onload = () => {
+          setImageDataUrl(fileReader.result);
+          resolve(fileReader.result);
+        };
 
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
+        fileReader.onerror = (error) => {
+          reject(error);
+        };
+      });
+    }
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     sendFile(file);
+    setImageDataUrl(null);
   };
 
   const handleDrop = (event) => {
@@ -64,26 +69,34 @@ function DragAndDrop() {
         document.getElementById("fileInput").click();
       }}
     >
-      {imageDataUrl ? (
-        <Image
-          className="max-w-full max-h-[80vh]"
-          src={imageDataUrl}
-          alt="File"
+      <div className={imageDataUrl ? "hidden" : ""}>
+        <label className="" htmlFor="fileInput">
+          Drag and Drop a receipt here or click this area to choose file
+        </label>
+        <input
+          className="hidden"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          id="fileInput"
+          onChange={handleFileChange}
         />
-      ) : (
-        <div>
-          <label className="" htmlFor="fileInput">
-            Drag and Drop a receipt here or click this area to choose file
-          </label>
-          <input
-            className="hidden"
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            id="fileInput"
-            onChange={handleFileChange}
+      </div>
+      <div
+        className={imageDataUrl ? "" : "hidden"}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+      >
+        {imageDataUrl && (
+          <Image
+            className="w-full max-h-[80vh]"
+            height={512}
+            width={512}
+            src={imageDataUrl}
+            alt="File"
           />
-        </div>
-      )}
+        )}
+        <div />
+      </div>
     </div>
   );
 }

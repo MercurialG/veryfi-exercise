@@ -41,9 +41,9 @@ const Camera = () => {
           <Webcam
             className="rounded-md shadow-sm mb-3"
             audio={false}
-            height={700}
+            height={1280}
             ref={webcamRef}
-            width={370}
+            width={768}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
           />
