@@ -7,16 +7,20 @@
     @apply p-1 my-[1px] border-[1px] border-blue-400 rounded-md;
   }
   .dragAndDrop {
-    @apply flex h-full items-center justify-center 
-    border-solid rounded-md my-3 hover:opacity-70  
+    @apply flex h-[80vh] w-[80%] md:w-[70%] items-center justify-center 
+    border-solid rounded-md mt-3 mb-5 hover:opacity-70  
     bg-[#DDE4E4] text-center font-mono font-bold p-5;
+  }
+  .cameraButton {
+    @apply h-[50px] w-full bg-gradient-to-r from-[#02f96f] to-[#29c7b9]
+    text-white uppercase font-mono font-bold p-2 rounded-t-md md:rounded-md;
   }
 }
 
 body {
   background: linear-gradient(-45deg, #171c3a, #115246);
   background-size: 400% 400%;
-  animation: bg-gradient 10s ease infinite;
+  animation: bg-gradient 5s ease infinite;
   height: 100vh;
 }
 

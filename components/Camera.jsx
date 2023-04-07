@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import { useReceiptContext } from "../context/state";
+import Image from "next/image";
 const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
-  width: 300,
-  height: 500,
+  width: 380,
+  height: 600,
   facingMode: "environment" || "user",
 };
 
@@ -33,21 +34,20 @@ const Camera = () => {
   }
 
   return (
-    <div className="bg-gray-500">
-      <h2 className="mb-5 text-center"></h2>
+    <div className="flex flex-col justify-center mt-3">
       <div className="">
         {picture == "" ? (
           <Webcam
-            className=""
+            className="rounded-md shadow-sm mb-3"
             audio={false}
-            height={600}
+            height={700}
             ref={webcamRef}
-            width={350}
+            width={370}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
           />
         ) : (
-          <img src={picture} />
+          <Image alt="Image" src={picture} />
         )}
       </div>
       <div>
@@ -57,7 +57,7 @@ const Camera = () => {
               e.preventDefault();
               setPicture();
             }}
-            className="btn btn-primary"
+            className="cameraButton"
           >
             Retake
           </button>
@@ -67,7 +67,7 @@ const Camera = () => {
               e.preventDefault();
               capture();
             }}
-            className="h-[30px] w-full mt-1 bg-gradient-to-r from-[#171c3a], to-[#115246]"
+            className="cameraButton"
           >
             Capture
           </button>

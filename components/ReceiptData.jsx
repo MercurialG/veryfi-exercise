@@ -668,10 +668,10 @@ function ReceiptData() {
   // Using data from context in ../context/state.js
   const { receiptData, setReceiptData } = useReceiptContext();
   const receipts = receiptData.map((item) => (
-    <li
-      className="min-h-[80vh] flex-row justify-center items-center 
+    <div
+      className="md:min-h-[80vh] w-[80%]
       p-5 list-none border-solid border-white-500 border-[2px] 
-      my-5 rounded-md bg-[#DDE4E4] shadow-md"
+      rounded-md bg-[#DDE4E4] shadow-md"
       key={item.id}
     >
       <p className="text-[12px] mb-2">{item.date}</p>
@@ -729,9 +729,11 @@ function ReceiptData() {
         {item.tip && <p>{`Tip (${item.currency_code}): ${item.tip}`}</p>}
         <p>{`Total (${item.currency_code}): ${item.total}`}</p>
       </div>
-    </li>
+    </div>
   ));
-  return <div className="md:mt-10">{receipts}</div>;
+  return (
+    <div className="flex justify-center pb-5 md:pb-0 mt-3">{receipts}</div>
+  );
 }
 
 export default ReceiptData;
