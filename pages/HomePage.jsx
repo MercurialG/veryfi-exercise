@@ -11,11 +11,12 @@ function HomePage() {
   const tabsRef = useRef(null);
 
   useEffect(() => {
-    if (tabsRef.current) {
+    if (receiptData && tabsRef.current) {
+      console.log(tabsRef);
       tabsRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "center",
-        inline: "center",
+        block: "start",
+        inline: "nearest",
       });
     }
   }, [receiptData]);
@@ -48,6 +49,7 @@ function HomePage() {
   return (
     <div className="flex flex-col gap-5 md:flex-row md:gap-10 mt-4 h-[70vh] w-[90vw] md:w-[80vw] mx-auto md:justify-center p-3">
       <Tabs tabs={inputTabs} />
+      <div className="msx:mb-5"></div>
       <Tabs tabs={outputTabs} innerRef={tabsRef} />
       <footer className="text-center md:hidden h-[10vh] p-5 pb-7 font-mono font-bold text-white">
         <p>MercurialG</p>
