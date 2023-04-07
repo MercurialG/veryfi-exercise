@@ -80,7 +80,7 @@ function DragAndDrop() {
         <input
           className="hidden"
           type="file"
-          accept=".jpg, .jpeg, .png"
+          accept="image/*"
           id="fileInput"
           onChange={handleFileChange}
         />

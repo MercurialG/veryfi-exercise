@@ -11,11 +11,12 @@ function HomePage() {
       title: "Choose file",
       component: <DragAndDrop />,
     },
-    {
-      key: "tab2",
-      title: "Camera",
-      component: <Camera />,
-    },
+    // {
+    //   key: "tab2",
+    //   title: "Camera",
+    //   component: <Camera />,
+    //   style: "hidden md:visible",
+    // },
   ];
   const outputTabs = [
     {
