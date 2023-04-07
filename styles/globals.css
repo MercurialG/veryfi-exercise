@@ -63,3 +63,12 @@ body {
   background-color: grey;
   opacity: 1;
 }
+
+ul > li {
+  cursor: pointer;
+}
+
+video {
+  min-width: 100%;
+  min-height: 90%;
+}
