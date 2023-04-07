@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ReceiptData from "../components/ReceiptData";
 import Tabs from "../components/Tabs";
 import DragAndDrop from "../components/DragAndDrop";
 import Camera from "../components/Camera";
 import DataDisplay from "../components/DataDisplay";
+import { useReceiptContext } from "../context/state";
+
 function HomePage() {
+  const { receiptData } = useReceiptContext();
+  const tabsRef = useRef(null);
+
+  useEffect(() => {
+    if (tabsRef.current) {
+      tabsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "center",
+      });
+    }
+  }, [receiptData]);
+
   const inputTabs = [
     {
       key: "tab1",
@@ -33,7 +48,7 @@ function HomePage() {
   return (
     <div className="flex flex-col gap-5 md:flex-row md:gap-10 mt-4 h-[70vh] w-[90vw] md:w-[80vw] mx-auto md:justify-center p-3">
       <Tabs tabs={inputTabs} />
-      <Tabs tabs={outputTabs} />
+      <Tabs tabs={outputTabs} innerRef={tabsRef} />
       <footer className="text-center md:hidden h-[10vh] p-5 pb-7 font-mono font-bold text-white">
         <p>MercurialG</p>
       </footer>
