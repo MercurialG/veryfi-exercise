@@ -4,8 +4,9 @@ import { useReceiptContext } from "../context/state";
 import Image from "next/image";
 const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
-  width: 380,
-  height: 600,
+  width: 768,
+  height: 1280,
+  // aspectRatio: 0.7,
   facingMode: "environment" || "user",
 };
 
