@@ -3,14 +3,59 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    @apply bg-gradient-to-r from-[#171C3A] to-[#115246];
-  }
   .receiptField {
     @apply p-1 my-[1px] border-[1px] border-blue-400 rounded-md;
   }
   .dragAndDrop {
-    @apply flex h-[100px] items-center justify-center border-dotted border-[5px]
-       border-blue-500 rounded-md my-3 hover:opacity-70 bg-[#DDE4E4];
+    @apply flex h-full items-center justify-center 
+    border-solid rounded-md my-3 hover:opacity-70  
+    bg-[#DDE4E4] text-center font-mono font-bold p-5;
   }
+}
+
+body {
+  background: linear-gradient(-45deg, #171c3a, #115246);
+  background-size: 400% 400%;
+  animation: bg-gradient 10s ease infinite;
+  height: 100vh;
+}
+
+@keyframes bg-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.active-tab {
+  position: relative;
+}
+.active-tab::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: calc(50% - 25px);
+  height: 3px;
+  width: 50px;
+  background: linear-gradient(60deg, #02f96f, #29c7b9);
+  opacity: 1;
+}
+
+.inactive-tab {
+  position: relative;
+}
+.inactive-tab:hover::after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: calc(50% - 25px);
+  height: 3px;
+  width: 50px;
+  background-color: grey;
+  opacity: 1;
 }

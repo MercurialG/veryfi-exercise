@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "HTTPS=true next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -17,6 +17,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-tabs": "^6.0.0",
+    "react-webcam": "^7.0.1",
     "request": "^2.88.2"
   },
   "devDependencies": {
