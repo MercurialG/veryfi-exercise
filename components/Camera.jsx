@@ -73,10 +73,7 @@ const Camera = () => {
           </button>
         )}
         {picture && (
-          <button
-            className="text-white p-2 bg-blue-400 rounded-md"
-            onClick={() => sendFile()}
-          >
+          <button className="cameraButton mx-y" onClick={() => sendFile()}>
             send
           </button>
         )}
