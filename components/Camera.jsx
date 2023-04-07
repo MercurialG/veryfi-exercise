@@ -47,7 +47,7 @@ const Camera = () => {
             videoConstraints={videoConstraints}
           />
         ) : (
-          <Image alt="Image" src={picture} />
+          <Image width={512} height={512} alt="Image" src={picture} />
         )}
       </div>
       <div>
