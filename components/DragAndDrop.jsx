@@ -62,7 +62,7 @@ function DragAndDrop() {
 
   return (
     <div
-      className="dragAndDrop"
+      className="dragAndDrop cursor-pointer"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       onClick={() => {

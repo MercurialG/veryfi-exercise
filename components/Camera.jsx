@@ -35,7 +35,7 @@ const Camera = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center mt-3">
+    <div className="flex-col justify-center mt-3 hidden lg:flex">
       <div className="">
         {picture == "" ? (
           <Webcam
