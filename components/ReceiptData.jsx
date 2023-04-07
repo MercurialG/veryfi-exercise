@@ -721,13 +721,16 @@ function ReceiptData() {
         </table>
       </div>
       <div className="receiptField text-right">
-        <p>{`Subtotal (${item.currency_code}): ${item.subtotal}`}</p>
+        <p>
+          {item.subtotal &&
+            `Subtotal (${item.currency_code}): ${item.subtotal}`}
+        </p>
         {item.discount && (
           <p>{`Discount (${item.currency_code}): -${item.discount}`}</p>
         )}
-        <p>{`Tax (${item.currency_code}): ${item.tax}`}</p>
+        <p>{item.tax && `Tax (${item.currency_code}): ${item.tax}`}</p>
         {item.tip && <p>{`Tip (${item.currency_code}): ${item.tip}`}</p>}
-        <p>{`Total (${item.currency_code}): ${item.total}`}</p>
+        <p>{item.total && `Total (${item.currency_code}): ${item.total}`}</p>
       </div>
     </div>
   ));
