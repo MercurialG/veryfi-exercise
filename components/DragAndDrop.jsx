@@ -4,7 +4,7 @@ import Image from "next/image";
 
 function DragAndDrop() {
   const [imageDataUrl, setImageDataUrl] = useState(null);
-  const { receiptData, setReceiptData } = useReceiptContext();
+  const { setReceiptData } = useReceiptContext();
 
   async function sendFile(file) {
     if (file) {
@@ -32,7 +32,7 @@ function DragAndDrop() {
 
         fileReader.onload = () => {
           setImageDataUrl(fileReader.result);
-          resolve(fileReader.result);
+          // resolve(fileReader.result);
         };
 
         fileReader.onerror = (error) => {
@@ -62,20 +62,16 @@ function DragAndDrop() {
 
   return (
     <div
-      className="dragAndDrop cursor-pointer"
+      className="lg:dragAndDrop cursor-pointer"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       onClick={() => {
         document.getElementById("fileInput").click();
       }}
     >
-      <div className={imageDataUrl ? "hidden" : ""}>
-        <label className="" htmlFor="fileInput">
-          Drag and Drop a receipt here or click this area to choose file.{" "}
-          <p className="mt-2 text-green-950">
-            If you are using mobile version you can click here and use your
-            camera
-          </p>
+      <div className={imageDataUrl ? "hidden" : "msx:attach"}>
+        <label className="hidden lg:block" htmlFor="fileInput">
+          Drag and Drop a receipt here or click this area to choose file.
         </label>
         <input
           className="hidden"
