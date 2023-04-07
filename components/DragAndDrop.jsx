@@ -71,7 +71,11 @@ function DragAndDrop() {
     >
       <div className={imageDataUrl ? "hidden" : ""}>
         <label className="" htmlFor="fileInput">
-          Drag and Drop a receipt here or click this area to choose file
+          Drag and Drop a receipt here or click this area to choose file.{" "}
+          <p className="mt-2 text-green-950">
+            If you are using mobile version you can click here and use your
+            camera
+          </p>
         </label>
         <input
           className="hidden"
