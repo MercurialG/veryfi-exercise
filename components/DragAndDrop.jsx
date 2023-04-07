@@ -32,7 +32,7 @@ function DragAndDrop() {
 
         fileReader.onload = () => {
           setImageDataUrl(fileReader.result);
-          // resolve(fileReader.result);
+          resolve(fileReader.result);
         };
 
         fileReader.onerror = (error) => {
