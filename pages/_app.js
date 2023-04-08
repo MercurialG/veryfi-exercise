@@ -1,11 +1,14 @@
-import { AppWrapper } from "../context/state";
+import { LoadingWrapper } from "../context/loadingState";
+import { ReceiptWrapper } from "../context/receiptState";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppWrapper>
-      <Component {...pageProps} />
-    </AppWrapper>
+    <ReceiptWrapper>
+      <LoadingWrapper>
+        <Component {...pageProps} />
+      </LoadingWrapper>
+    </ReceiptWrapper>
   );
 }
 

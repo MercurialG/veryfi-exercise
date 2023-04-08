@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
+// State to pass receipt data around the app
 
 const ReceiptContext = createContext();
 
-export function AppWrapper({ children }) {
+export function ReceiptWrapper({ children }) {
   const [receiptData, setReceiptData] = useState([
     // {
     //   account_number: "936886",

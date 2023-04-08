@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
+// Reusable Tabs component - provide it with array of components and switch between them
 const Tabs = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0].key);
 
-  //  Tab switching handlers
   const handleTabClick = (tabKey) => {
     setActiveTab(tabKey);
   };
 
+  // Somehow it doesnt want to use styles from global.css
   return (
+    // Tab buttons
     <div className="h-[95vh] border-solid border-[1px] border-green-500 ">
       <ul className="flex flex-row justify-evenly text-white font-mono font-bold p-3 transition-all duration-500 ease-in-out">
         {tabs.map((tab) => (
@@ -21,7 +23,7 @@ const Tabs = ({ tabs }) => {
           </li>
         ))}
       </ul>
-
+      {/* Tab content */}
       <div className="flex justify-center md:w-[45vw] transition-all duration-500 ease-in-out">
         {tabs.find((tab) => tab.key === activeTab).component}
       </div>

@@ -3,6 +3,7 @@ const API_KEY = process.env.API_KEY;
 const CLIENT_ID = process.env.CLIENT_ID;
 const ENVIRONMENT_URL = process.env.ENVIRONMENT_URL;
 
+// Solving problem with file size limit
 export const config = {
   api: {
     bodyParser: {
@@ -30,7 +31,7 @@ export default async function handler(req, res) {
     },
     body: jsonData,
   };
-
+  // Some error handling
   try {
     const response = await fetch(
       `${ENVIRONMENT_URL}/api/v8/partner/documents/`,

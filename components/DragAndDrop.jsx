@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { useReceiptContext } from "../context/state";
 import Image from "next/image";
+import { useState } from "react";
+import { useReceiptContext } from "../context/receiptState";
+import { useLoadingContext } from "../context/loadingState";
 
+// Component used for collecting input and sending it to serverless function - api/upload
 function DragAndDrop() {
   const [imageDataUrl, setImageDataUrl] = useState(null);
   const { setReceiptData } = useReceiptContext();
+  const { setLoading } = useLoadingContext();
 
   async function sendFile(file) {
     if (file) {
+      setLoading(true); // Setting loading context to show spinner
       const base64 = await convertBase64(file);
       const fileBody = JSON.stringify({
         fileName: file.name,
@@ -20,7 +24,8 @@ function DragAndDrop() {
       });
 
       const data = await response.json();
-      setReceiptData([data]);
+      setReceiptData([data]); //Got data
+      setLoading(false); //Stop spinner
     }
   }
   // Convert input image to base64
@@ -41,6 +46,8 @@ function DragAndDrop() {
       });
     }
   };
+
+  // Set of simple input hadlers
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
