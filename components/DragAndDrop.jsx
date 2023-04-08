@@ -62,7 +62,7 @@ function DragAndDrop() {
 
   return (
     <div
-      className="lg:dragAndDrop cursor-pointer"
+      className="md:dragAndDrop cursor-pointer opacity-50 transition-all duration-500 ease-in-out"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
       onClick={() => {
@@ -70,7 +70,7 @@ function DragAndDrop() {
       }}
     >
       <div className={imageDataUrl ? "hidden" : "msx:attach"}>
-        <label className="hidden lg:block" htmlFor="fileInput">
+        <label className="hidden md:block" htmlFor="fileInput">
           Drag and Drop a receipt here or click this area to choose file.
         </label>
         <input

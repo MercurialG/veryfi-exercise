@@ -326,7 +326,7 @@ function ReceiptData() {
     <div
       className="h-[80vh] w-[80%]
       p-5 list-none border-solid border-white-500 border-[2px] 
-      rounded-md bg-[#DDE4E4] shadow-md overflow-scroll"
+      rounded-md bg-[#DDE4E4] shadow-md overflow-scroll transition-all duration-500 ease-in-out"
       key={item.id}
     >
       <p className="text-[12px] mb-2">{item.date}</p>

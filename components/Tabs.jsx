@@ -9,8 +9,8 @@ const Tabs = ({ tabs }) => {
   };
 
   return (
-    <div className="h-[95vh] border-solid border-[1px] border-green-500">
-      <ul className="flex flex-row justify-evenly text-white font-mono font-bold p-3">
+    <div className="h-[95vh] border-solid border-[1px] border-green-500 ">
+      <ul className="flex flex-row justify-evenly text-white font-mono font-bold p-3 transition-all duration-500 ease-in-out">
         {tabs.map((tab) => (
           <li
             key={tab.key}
@@ -22,7 +22,7 @@ const Tabs = ({ tabs }) => {
         ))}
       </ul>
 
-      <div className="flex justify-center md:w-[45vw]">
+      <div className="flex justify-center md:w-[45vw] transition-all duration-500 ease-in-out">
         {tabs.find((tab) => tab.key === activeTab).component}
       </div>
     </div>
