@@ -2,15 +2,15 @@ import Spinner from "./Spinner";
 import { useReceiptContext } from "../context/receiptState";
 import { useLoadingContext } from "../context/loadingState";
 
-const JsonDisplay = () => {
+const DataDisplay = () => {
   const { receiptData } = useReceiptContext(); // Using data from context in ../context/state.js
   const { loading } = useLoadingContext(); // Loading state used for conditional rendering
   return (
-    <div>
+    <div className="dataDisplay">
       {loading ? (
         <Spinner />
       ) : (
-        <div className="dataDisplay">
+        <div>
           <pre>
             <code>{JSON.stringify(receiptData, null, 2)}</code>
           </pre>
@@ -20,4 +20,4 @@ const JsonDisplay = () => {
   );
 };
 
-export default JsonDisplay;
+export default DataDisplay;
