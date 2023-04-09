@@ -8,10 +8,9 @@ const Tabs = ({ tabs }) => {
     setActiveTab(tabKey);
   };
 
-  // Somehow it doesnt want to use styles from global.css
   return (
     // Tab buttons
-    <div className="h-[95vh] border-solid border-[1px] border-green-500 ">
+    <div className="h-[95vh] border-solid border-[1px] border-green-500">
       <ul className="flex flex-row justify-evenly text-white font-mono font-bold p-3 transition-all duration-500 ease-in-out">
         {tabs.map((tab) => (
           <li
