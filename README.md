@@ -1,6 +1,6 @@
 **Receipt OCR App**
 
-This app takes an image of a receipt as input, sends it to the Veryfi OCR API, and returns the processed data as a visualized receipt and JSON.
+This app takes an image of a receipt as input, sends it to the Veryfi OCR API, and returns the processed data as a visualized receipt and JSON.  
 App is deployed at https://veryfi-exercise.vercel.app/
 
 **Technologies Used**  
