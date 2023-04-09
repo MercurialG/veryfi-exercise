@@ -6,9 +6,9 @@ import JsonDisplay from "../components/JsonDisplay";
 import ReceiptDisplay from "../components/ReceiptDisplay";
 
 function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [imageDataUrl, setImageDataUrl] = useState(null);
-  const [receiptData, setReceiptData] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [imageDataUrl, setImageDataUrl] = useState(null); //used to show uploaded image
+  const [receiptData, setReceiptData] = useState(); //API response
   const tabsRef = useRef(null);
 
   // This should scroll to data when its loaded on mobile... Should

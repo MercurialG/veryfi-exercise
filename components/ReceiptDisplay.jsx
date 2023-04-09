@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Spinner from "./Spinner";
 
-function ReceiptDisplay({ loading, receiptData }) {
+function ReceiptDisplay({ isLoading, receiptData }) {
   const receipts = receiptData?.map((item) => (
     <div className="p-5" key={item.id}>
       <p className="text-[12px] mb-2">{item.date}</p>
@@ -72,7 +72,7 @@ function ReceiptDisplay({ loading, receiptData }) {
   ));
   return (
     <div className="dataDisplay">
-      {loading ? (
+      {isLoading ? (
         <Spinner />
       ) : receiptData ? (
         <div className="flex justify-center pb-5 md:pb-0 mt-3">{receipts}</div>

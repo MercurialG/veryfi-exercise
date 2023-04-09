@@ -1,9 +1,9 @@
 import Spinner from "./Spinner";
 
-const DataDisplay = ({ loading, receiptData }) => {
+const DataDisplay = ({ isLoading, receiptData }) => {
   return (
     <div className="dataDisplay">
-      {loading == true ? (
+      {isLoading == true ? (
         <Spinner />
       ) : receiptData ? (
         <div>
