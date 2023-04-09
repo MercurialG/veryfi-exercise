@@ -11,6 +11,8 @@ function FileInput({
       className="md:dragAndDrop cursor-pointer opacity-80 transition-all duration-500 ease-in-out"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
+      role="button"
+      aria-label="Choose a file to upload"
       onClick={() => {
         document.getElementById("fileInput").click();
       }}
@@ -31,6 +33,8 @@ function FileInput({
         className={imageDataUrl ? "" : "hidden"}
         onDragOver={handleDragOver}
         onDrop={handleDrop}
+        role="region"
+        aria-live="polite"
       >
         {imageDataUrl && (
           <div>

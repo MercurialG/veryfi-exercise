@@ -13,12 +13,17 @@ const Tabs = ({ tabs }) => {
     <div className="h-[95vh] border-solid border-[1px] border-green-500">
       <ul className="flex flex-row justify-evenly text-white font-mono font-bold p-3 transition-all duration-500 ease-in-out">
         {tabs.map((tab) => (
-          <li
-            key={tab.key}
-            className={activeTab === tab.key ? "active-tab" : "inactive-tab"}
-            onClick={() => handleTabClick(tab.key)}
-          >
-            {tab.title}
+          <li key={tab.key}>
+            <button
+              className={activeTab === tab.key ? "active-tab" : "inactive-tab"}
+              onClick={() => handleTabClick(tab.key)}
+              aria-selected={activeTab === tab.key}
+              role="tab"
+              tabIndex={activeTab === tab.key ? 0 : -1}
+              title={tab.title}
+            >
+              {tab.title}
+            </button>
           </li>
         ))}
       </ul>

@@ -13,7 +13,7 @@ function ReceiptDisplay({ isLoading, receiptData }) {
             className="mx-auto mb-1 border-solid border-grey-400 border-[1px] rounded-full"
             height={100}
             width={100}
-            alt="logo"
+            alt={item.vendor.name + " logo"}
             src={item.vendor.logo}
           />
         )}
@@ -27,13 +27,17 @@ function ReceiptDisplay({ isLoading, receiptData }) {
           <Link
             className="text-sm self-center font-bold mb-1 text-green-600"
             href={item.vendor.map_url}
+            title={`Show ${item.vendor.name} on map`}
           >
             Show on map
           </Link>
         )}
       </div>
       <div>
-        <table className="table-fixed text-center w-full divide-y divide-black mb-5 border-b-[1px] border-black">
+        <table
+          className="table-fixed text-center w-full divide-y divide-black mb-5 border-b-[1px] border-black"
+          summary="Receipt main data: items, amount, prices and total"
+        >
           <thead className="text-sm">
             <tr>
               <th>Item</th>
@@ -70,6 +74,7 @@ function ReceiptDisplay({ isLoading, receiptData }) {
       </div>
     </div>
   ));
+
   return (
     <div className="dataDisplay">
       {isLoading ? (

@@ -24,7 +24,7 @@ function HomePage() {
 
   async function sendFile(file) {
     if (file) {
-      setIsLoading(true);
+      setIsLoading((prev) => !prev);
       const base64 = await convertBase64(file);
       const fileBody = JSON.stringify({
         fileName: file.name,
@@ -38,7 +38,7 @@ function HomePage() {
 
       const data = await response.json();
       setReceiptData([data]);
-      setIsLoading(false);
+      setIsLoading((prev) => !prev);
     }
   }
   const convertBase64 = (file) => {
@@ -118,10 +118,13 @@ function HomePage() {
       </Head>
       <main className="h-full">
         <div className="homePage">
-          <Tabs tabs={inputTabs} />
+          <Tabs role="tablist" tabs={inputTabs} />
           <div className="msx:mb-5"></div>
-          <Tabs tabs={outputTabs} innerRef={tabsRef} />
-          <footer className="text-center md:hidden h-[10vh] p-5 pb-7 font-mono font-bold text-white">
+          <Tabs role="tablist" tabs={outputTabs} innerRef={tabsRef} />
+          <footer
+            role="contentinfo"
+            className="text-center md:hidden h-[10vh] p-5 pb-7 font-mono font-bold text-white"
+          >
             <p>@MercurialG</p>
           </footer>
         </div>
