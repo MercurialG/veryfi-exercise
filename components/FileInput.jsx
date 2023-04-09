@@ -34,7 +34,7 @@ function FileInput({
       >
         {imageDataUrl && (
           <div>
-            <div className="border-green-500 border-solid border-[1px]">
+            <div className="border-green-500 border-solid border-[1px] text-center font-mono font-bold">
               <p>Cick the image to upload another file</p>
             </div>
             <Image

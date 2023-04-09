@@ -65,14 +65,12 @@ function HomePage() {
     sendFile(file);
     setImageDataUrl(null);
   };
-
   const handleDrop = (event) => {
     event.preventDefault();
     event.stopPropagation();
     const file = event.dataTransfer.files[0];
     sendFile(file);
   };
-
   const handleDragOver = (event) => {
     event.preventDefault();
     event.stopPropagation();
