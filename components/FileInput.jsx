@@ -34,11 +34,11 @@ function FileInput({
       >
         {imageDataUrl && (
           <div>
-            <div className="border-green-500 border-solid border-[1px] text-center font-mono font-bold">
+            <div className="border-green-500 border-solid border-[1px] text-sm text-center font-mono font-bold text-white md:text-black">
               <p>Cick the image to upload another file</p>
             </div>
             <Image
-              className="h-[75vh] rounded-md"
+              className="h-[70vh] rounded-md"
               height={512}
               width={512}
               src={imageDataUrl}

@@ -1,34 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Receipt OCR App
+This app takes an image of a receipt as input, sends it to the Veryfi OCR API, and returns the processed data as a visualized receipt and JSON.
+App is deployed at https://veryfi-exercise.vercel.app/
 
-## Getting Started
+Technologies Used
+Next.js
+Tailwind CSS
 
-First, run the development server:
+Getting Started
+Prerequisites
+Node.js
+Veryfi API credentials
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Installing
+Clone the repository
+Install dependencies using npm install
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Configuration
+You need to configure the Veryfi API credentials by setting the following environment variables:
+ENVIRONMENT_URL
+CLIENT_ID
+USER_NAME
+API_KEY
+Or if its just for testing you can provide them directly to the /pages/api/upload.js
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Running the App
+Start the development server using npm run dev
+Navigate to http://localhost:3000 in your browser
+Take upload an image of a receipt or take a photo of it if you're on mobile(Browser will ask you for permission to use device's camera)
+The app will send the image to the Veryfi OCR API and return the processed data as a visualized receipt and JSON
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Acknowledgements
+This app uses the Veryfi OCR API to process receipt data.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Summary of development
+I've chosen next js to use its serverless functions as my API point not to create extra server for one function. I wanted to use usual input and a camera input for which tried to use react-webcam package, to find that usual html input on mobile can use device camera and works better in terms of image quality than react-webcam, so it was taken out.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+First I used react context to store states, but it was an overkill as i needed only three states, so i rearranged components and moved all the logic to the only page i have and left components to be "dumb". I've managed all the needed states using useState hook and passed them to the components.
