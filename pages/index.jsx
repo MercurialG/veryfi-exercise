@@ -6,7 +6,7 @@ import JsonDisplay from "../components/JsonDisplay";
 import ReceiptDisplay from "../components/ReceiptDisplay";
 
 function HomePage() {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [imageDataUrl, setImageDataUrl] = useState(null);
   const [receiptData, setReceiptData] = useState();
   const tabsRef = useRef(null);
