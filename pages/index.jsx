@@ -30,7 +30,7 @@ function HomePage() {
   //Send file data to the serverless function
   async function sendFile(file) {
     if (file) {
-      setIsLoading(true);
+      setIsLoading((prev) => !prev);
       const base64 = await convertBase64(file);
       const fileBody = JSON.stringify({
         fileName: file.name,
@@ -43,7 +43,7 @@ function HomePage() {
 
       const data = await response.json();
       setReceiptData([data]);
-      setIsLoading(false);
+      setIsLoading((prev) => !prev);
     }
   }
   const convertBase64 = (file) => {
@@ -84,13 +84,15 @@ function HomePage() {
       key: "tab1",
       title: "Visualised Data",
       component: (
-        <ReceiptDisplay loading={isLoading} receiptData={receiptData} />
+        <ReceiptDisplay isLoading={isLoading} receiptData={receiptData} />
       ),
     },
     {
       key: "tab2",
       title: "JSON",
-      component: <JsonDisplay loading={isLoading} receiptData={receiptData} />,
+      component: (
+        <JsonDisplay isLoading={isLoading} receiptData={receiptData} />
+      ),
     },
   ];
 
