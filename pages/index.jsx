@@ -10,10 +10,27 @@ function HomePage() {
   const [imageDataUrl, setImageDataUrl] = useState(null); //used to show uploaded image
   const [receiptData, setReceiptData] = useState(); //API response
 
+  // Handlers for input component
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    sendFile(file);
+    setImageDataUrl(null);
+  };
+  const handleDrop = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const file = event.dataTransfer.files[0];
+    sendFile(file);
+  };
+  const handleDragOver = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+  };
+
   //Send file data to the serverless function
   async function sendFile(file) {
     if (file) {
-      setIsLoading((prev) => !prev);
+      setIsLoading(true);
       const base64 = await convertBase64(file);
       const fileBody = JSON.stringify({
         fileName: file.name,
@@ -26,7 +43,7 @@ function HomePage() {
 
       const data = await response.json();
       setReceiptData([data]);
-      setIsLoading((prev) => !prev);
+      setIsLoading(false);
     }
   }
   const convertBase64 = (file) => {
@@ -45,23 +62,6 @@ function HomePage() {
         };
       });
     }
-  };
-
-  // Handlers for input component
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    sendFile(file);
-    setImageDataUrl(null);
-  };
-  const handleDrop = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    const file = event.dataTransfer.files[0];
-    sendFile(file);
-  };
-  const handleDragOver = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
   };
 
   // Set prop arrays for Tabs components
