@@ -9,26 +9,14 @@ function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [imageDataUrl, setImageDataUrl] = useState(null); //used to show uploaded image
   const [receiptData, setReceiptData] = useState(); //API response
-  const tabsRef = useRef(null);
 
-  // This should scroll to data when its loaded on mobile... Should
-  useEffect(() => {
-    if (receiptData && tabsRef.current) {
-      tabsRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
-    }
-  }, [receiptData]);
-
+  //Send file data to the serverless function
   async function sendFile(file) {
     if (file) {
       setIsLoading((prev) => !prev);
       const base64 = await convertBase64(file);
       const fileBody = JSON.stringify({
         fileName: file.name,
-        fileType: file.type,
         fileData: base64,
       });
       const response = await fetch("/api/upload", {
@@ -120,7 +108,7 @@ function HomePage() {
         <div className="homePage">
           <Tabs role="tablist" tabs={inputTabs} />
           <div className="msx:mb-5"></div>
-          <Tabs role="tablist" tabs={outputTabs} innerRef={tabsRef} />
+          <Tabs role="tablist" tabs={outputTabs} />
           <footer
             role="contentinfo"
             className="text-center md:hidden h-[10vh] p-5 pb-7 font-mono font-bold text-white"
