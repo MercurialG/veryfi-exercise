@@ -34,9 +34,9 @@ Or if its just for testing you can provide them directly to the /pages/api/uploa
   The app will send the image to the Veryfi OCR API and return the processed data as a visualized receipt and JSON
 
 **System**  
-index.js - handles all user interactions, connects to serverless function and passes props into components  
+index.jsx - handles all user interactions, connects to serverless function and passes props into components  
 pages/api/upload.js - serverless function, sends data to Veryfi OCR API and gets responses  
-/components - all the ui components
+/components - directory with all the ui components
 
 **Acknowledgements**  
 This app uses the Veryfi OCR API to process receipt data.
